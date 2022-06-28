@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 
 import '../model/place.dart';
@@ -9,5 +11,14 @@ class GreatPlaces with ChangeNotifier {
     return [..._items];
   }
 
-   
+  void addPlace(String title, File pickedImage) {
+    final newPlace = Place(
+        id: DateTime.now().toString(),
+        title: title,
+        image: pickedImage,
+        location:
+            PlaceLocation(latitude: 2.333, longitude: 5.222, address: ''));
+    _items.add(newPlace);
+    notifyListeners();
+  }
 }
